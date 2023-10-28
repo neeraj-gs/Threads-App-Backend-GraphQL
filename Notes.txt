@@ -1,1 +1,15 @@
 GraphQL
+
+Rest API
+   Client ---->  Server
+   User needs some resource does a GET request on an API Route, Server Gives the Data
+   Problem:
+   1.Only a Specific Part of data is required , but we need to fetch all if using REST API, Bandwidth reduces , unnecessary data is being transfered
+   2.We need to fo a seperate call for more data from the first requiest , then server sends more unnecessary data
+      Need to do 2 API Calls and more unnecessary data.
+
+
+GraphQL
+   Solution for the REST API Problems
+      1.Client can specify the exact data required and not the entire respnse is sent.
+      2. Instead of calling 2 API's we can have Nested queries , that solves the problem of repeated calling
