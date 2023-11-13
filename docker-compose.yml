@@ -1,0 +1,16 @@
+version: '3.4' #Version somme version
+services: #What all services to run
+  postgres:
+  container_name: threads-db #container name
+  image: postgres #image to be used
+  ports:
+    - 5432:5432 #port mapping bydefautla dn mapped to 5432
+  volumes:
+    - postgres_data:/var/lib/postgresql/data #mount postgres_data on var lib and postgresql data, any database data is stored here
+  environment: #environment varaibles as a list
+    POSTGRES_USER: postgres #user name of db
+    POSTGRES_DB : threads #db name
+    POSTGRES_PASSWORDD: threads #db password or pg password
+
+volumes: #volume creaaion 
+  postgres_data:
