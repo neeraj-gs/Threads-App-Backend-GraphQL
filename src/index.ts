@@ -5,6 +5,13 @@ import express from 'express'
 const app =express();
 const PORT = Number(process.env.PORT) || 8000
 
+//Create Graph QL Server
+const gqlServer = new ApolloServer({
+    typeDefs:'',
+    resolvers:{},
+})
+
+
 app.get('/',(req,res)=>{
     res.json({message:'Server is Running'})
 })
