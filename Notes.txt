@@ -40,3 +40,12 @@ using a DAO  data access object .
 
 
 Any thrid party express or trpc all these are interacted with servcice alyyer , these are better  for good reusability adn more
+
+Tech Stack
+   ExpressJS - -Server 
+   GraphQL - Apollo 
+   Postgress 
+   Docker 
+   TypeScript
+
+
