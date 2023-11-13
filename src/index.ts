@@ -21,6 +21,7 @@ const gqlServer = new ApolloServer({
             hello:  ()=> `Hii gql`
         }
     }, //actual code or function taht executes
+    //if we are passsing sme parameter the first query will be an empty _ underscore
 })
 
 await gqlServer.start();
