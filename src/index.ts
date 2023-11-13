@@ -21,6 +21,11 @@ app.get('/',(req,res)=>{
 })
 //we cant await at global level so write entire code into a fucntion and run inside it
 
+app.use('/graphql',expressMiddleware(gqlServer));
+
+
+
+
 app.listen(PORT,()=>{
     console.log(`Server is Running at http://localhost:${PORT}`)
 })
