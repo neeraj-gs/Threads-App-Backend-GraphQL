@@ -7,10 +7,20 @@ async function init(){
     const app =express();
 const PORT = Number(process.env.PORT) || 8000
 
+app.use(express.json()); //any requirest as json we need to parse it
+
 //Create Graph QL Server
 const gqlServer = new ApolloServer({
-    typeDefs:'',
-    resolvers:{},
+    typeDefs:`
+        type Query {
+            hello: String
+        }
+    `, //schema
+    resolvers:{
+        Query:{
+            hello:  ()=> `Hii gql`
+        }
+    }, //actual code or function taht executes
 })
 
 await gqlServer.start();
