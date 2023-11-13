@@ -37,3 +37,6 @@ THese layers interact with the database , all teh business logic insid ethe serv
 using a DAO  data access object . 
    Any Data layer is in an isolated envirmnet , created by ORM's and its client will interact witht the database and is in connction with our databse. 
    Service layer interacts with the DAO Layer
+
+
+Any thrid party express or trpc all these are interacted with servcice alyyer , these are better  for good reusability adn more
