@@ -1,3 +1,6 @@
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
+
 import express from 'express'
 const app =express();
 const PORT = Number(process.env.PORT) || 8000
