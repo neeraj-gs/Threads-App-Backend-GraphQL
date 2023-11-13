@@ -1,3 +1,6 @@
+THreads App Backend Using GraphQL 
+
+
 GraphQL
 
 Rest API
@@ -13,3 +16,24 @@ GraphQL
    Solution for the REST API Problems
       1.Client can specify the exact data required and not the entire respnse is sent.
       2. Instead of calling 2 API's we can have Nested queries , that solves the problem of repeated calling
+
+
+Threads Backend Architecture
+   GraphQL server has queries and mutrations
+   Query - to get something from server , to the client , fetch data 
+   Mutation - to add data into our backend -- we use mutation to add data 
+
+   there is a schema layer , that is graphql server scheam and not database schema 
+   We need to specify what type fo data is required , this is given by cleint adn the structure is before hand told in schema layer 
+
+There are resolvers for queries and mutations where it ahs the actual code of what it has ti be done, typeDefs adn query and names of the actions 
+reolcer has actual code implemetnation of fn name in qury and then does the actual code 
+
+We get back data in same format we asked or queried for .
+we can use db operations in resolcvers also it is not a good practice as we have coupled it tightly , to change some data, then we need ot change it everywhere and coupled it that is hardcoded , and express or any other cant use it
+
+We create a service layer for CRUD Operations  , there are multiple operations 
+THese layers interact with the database , all teh business logic insid ethe service layer 
+using a DAO  data access object . 
+   Any Data layer is in an isolated envirmnet , created by ORM's and its client will interact witht the database and is in connction with our databse. 
+   Service layer interacts with the DAO Layer
