@@ -66,4 +66,5 @@ psql -- enter into postgresql
 \c name -- switches to  the databse 
 \d - to lists tthe tables 
 \d table_name - lists the columns 
+\x - to dispaly in column wise
 
