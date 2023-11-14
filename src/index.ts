@@ -18,7 +18,7 @@ const gqlServer = new ApolloServer({
         }
 
         type Mutation {
-            createUser(firstNmae:String!,lastName:String! ,email:String!, password:String!): Boolean
+            createUser(firstName:String!,lastName:String! ,email:String!, password:String!): Boolean
         }
 
     `, //schema
@@ -35,7 +35,7 @@ const gqlServer = new ApolloServer({
                         firstName,
                         lastName,
                         password,
-                        salt: 'random_salt'
+                        salt: 'random_salt' //later we use bcrypt or cryptojs adn crete a salt
                     },
                 });
                 return true

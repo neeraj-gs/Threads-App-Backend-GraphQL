@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = require("@apollo/server");
 const express4_1 = require("@apollo/server/express4");
 const express_1 = __importDefault(require("express"));
+const db_1 = require("./lib/db");
 function init() {
     return __awaiter(this, void 0, void 0, function* () {
         const app = (0, express_1.default)();
@@ -26,12 +27,32 @@ function init() {
         type Query {
             hello: String
         }
+
+        type Mutation {
+            createUser(firstName:String!,lastName:String! ,email:String!, password:String!): Boolean
+        }
+
     `,
             resolvers: {
                 Query: {
                     hello: () => `Hii gql`
+                },
+                Mutation: {
+                    createUser: (_, { firstName, lastName, email, password }) => __awaiter(this, void 0, void 0, function* () {
+                        yield db_1.prismaClient.user.create({
+                            data: {
+                                email,
+                                firstName,
+                                lastName,
+                                password,
+                                salt: 'random_salt' //later we use bcrypt or cryptojs adn crete a salt
+                            },
+                        });
+                        return true;
+                    })
                 }
             }, //actual code or function taht executes
+            //if we are passsing sme parameter the first query will be an empty _ underscore
         });
         yield gqlServer.start();
         app.get('/', (req, res) => {
