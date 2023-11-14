@@ -10,7 +10,7 @@ services: #What all services to run
     environment: #environment varaibles as a list
       POSTGRES_USER: postgres #user name of db
       POSTGRES_DB : threads #db name
-      POSTGRES_PASSWORDD: threads #db password or pg password
+      POSTGRES_PASSWORD: threads #db password or pg password
 
 volumes: #volume creaaion 
   postgres_data:
