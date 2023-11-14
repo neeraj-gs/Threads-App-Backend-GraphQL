@@ -2,6 +2,7 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 
 import express from 'express'
+import { prismaClient } from './lib/db';
 
 async function init(){
     const app =express();
@@ -15,11 +16,32 @@ const gqlServer = new ApolloServer({
         type Query {
             hello: String
         }
+
+        type Mutation {
+            createUser(firstNmae:String!,lastName:String! ,email:String!, password:String!): Boolean
+        }
+
     `, //schema
+
     resolvers:{
         Query:{
             hello:  ()=> `Hii gql`
+        },
+        Mutation: {
+            createUser: async (_,{firstName,lastName,email,password}:{firstName:string; lastName:string; email:string;password:string})=>{
+                await prismaClient.user.create({
+                    data:{
+                        email,
+                        firstName,
+                        lastName,
+                        password,
+                        salt: 'random_salt'
+                    },
+                });
+                return true
+            }
         }
+
     }, //actual code or function taht executes
     //if we are passsing sme parameter the first query will be an empty _ underscore
 })
