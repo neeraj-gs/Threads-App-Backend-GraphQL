@@ -68,3 +68,15 @@ psql -- enter into postgresql
 \d table_name - lists the columns 
 \x - to dispaly in column wise
 
+
+If there is already a filder being tracked by git then there is a cache so need to clear it before addingot ignore filder
+
+git rm -r --cached build/
+git add .gitignore
+git commit -m "Ignore build folder"
+git push origin master
+git rm -r --cached build/
+git commit -m "Remove build folder from repository"
+git push origin master
+
+
