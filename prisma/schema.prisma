@@ -9,3 +9,16 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model User{
+  id String @id @default(uuid())
+  firstName String @map("first_name") //code level fiirst anem adn at the databse level we mapt at name
+  lastName String @map("last_name") //its notnimportatn to map, but sql is pereferd to use tunderscrore syntax 
+  profileImgURL String @map("profile__image_url")
+  email String @unique
+  password String 
+  salt String //hashed password has to be stored and each user has a salt
+  
+  @@map("users") //table name will be suers as wehave mapped it
+}
