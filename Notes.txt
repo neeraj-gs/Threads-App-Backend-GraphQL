@@ -48,4 +48,6 @@ Tech Stack
    Docker 
    TypeScript
 
+We ahve used docekr for our developement process to setup postgresql 
+
 
