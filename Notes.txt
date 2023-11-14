@@ -50,4 +50,20 @@ Tech Stack
 
 We ahve used docekr for our developement process to setup postgresql 
 
+whenever we update db prisma we need to migrate the databse and the migrations are created 
+npx prisma migrate dev --name description_of_migration
+
+
+Docker Compose up 
+It is used to  run teh psotgresql ont he containewr instaead of downloading it to the computer
+docker-compose up -d -- runs the container in teh background, need to login to docker and do it 
+docker exec -it c_id bash -- opens a bash of the container and can use postfresql inside the container 
+then we can start using it 
+
+su user_name
+psql -- enter into postgresql
+\l -- lists the databses 
+\c name -- switches to  the databse 
+\d - to lists tthe tables 
+\d table_name - lists the columns 
 
