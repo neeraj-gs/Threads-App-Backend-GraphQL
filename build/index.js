@@ -12,54 +12,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = require("@apollo/server");
 const express4_1 = require("@apollo/server/express4");
+const graphql_1 = __importDefault(require("./graphql"));
 const express_1 = __importDefault(require("express"));
-const db_1 = require("./lib/db");
 function init() {
     return __awaiter(this, void 0, void 0, function* () {
         const app = (0, express_1.default)();
         const PORT = Number(process.env.PORT) || 8000;
         app.use(express_1.default.json()); //any requirest as json we need to parse it
-        //Create Graph QL Server
-        const gqlServer = new server_1.ApolloServer({
-            typeDefs: `
-        type Query {
-            hello: String
-        }
-
-        type Mutation {
-            createUser(firstName:String!,lastName:String! ,email:String!, password:String!): Boolean
-        }
-
-    `,
-            resolvers: {
-                Query: {
-                    hello: () => `Hii gql`
-                },
-                Mutation: {
-                    createUser: (_, { firstName, lastName, email, password }) => __awaiter(this, void 0, void 0, function* () {
-                        yield db_1.prismaClient.user.create({
-                            data: {
-                                email,
-                                firstName,
-                                lastName,
-                                password,
-                                salt: 'random_salt' //later we use bcrypt or cryptojs adn crete a salt
-                            },
-                        });
-                        return true;
-                    })
-                }
-            }, //actual code or function taht executes
-            //if we are passsing sme parameter the first query will be an empty _ underscore
-        });
-        yield gqlServer.start();
         app.get('/', (req, res) => {
             res.json({ message: 'Server is Running' });
         });
         //we cant await at global level so write entire code into a fucntion and run inside it
-        app.use('/graphql', (0, express4_1.expressMiddleware)(gqlServer));
+        // const gqlServer = await expressMiddleware(createApolloGraphqlServer())
+        app.use('/graphql', (0, express4_1.expressMiddleware)(yield (0, graphql_1.default)()));
         app.listen(PORT, () => {
             console.log(`Server is Running at http://localhost:${PORT}`);
         });
