@@ -13,7 +13,7 @@ export interface CreateUserPayload{
 class UserService {
     public static createUser(payload:CreateUserPayload){
         const {firstName, lastName, email, password} = payload
-        const salt = randomBytes(32).toString();
+        const salt = randomBytes(32).toString('hex');
         const hashpwd = createHmac('sha256', salt).update(password).digest('hex') //uses this salt and then store hte password
         return prismaClient.user.create({
             data:{
