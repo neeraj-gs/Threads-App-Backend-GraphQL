@@ -25,6 +25,15 @@ class UserService {
         return hashpwd
     }
 
+
+    public static getUserById(id:string){
+        return prismaClient.user.findUnique({
+            where:{
+                id:id
+            }
+        })
+    }
+
     public static createUser(payload:CreateUserPayload){
         const {firstName, lastName, email, password} = payload
         const salt = randomBytes(32).toString('hex');
