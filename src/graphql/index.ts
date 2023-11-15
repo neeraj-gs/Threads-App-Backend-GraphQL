@@ -9,7 +9,6 @@ const gqlServer = new ApolloServer({
         ${User.typeDefs}
         type Query {
             ${User.queries}
-            getContext: String
         }
 
         type Mutation {
@@ -21,10 +20,7 @@ const gqlServer = new ApolloServer({
     resolvers:{
         Query:{
             ...User.resolvers.queries,
-            getContext:(_:any,parameters:any,context)=>{
-                console.log(context)
-                return "Okay"
-            }
+            //anyresolver has a third parameter as context
         },
         Mutation: {
             ...User.resolvers.mutations

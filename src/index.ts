@@ -2,6 +2,7 @@ import { expressMiddleware } from '@apollo/server/express4';
 import createApolloGraphqlServer from './graphql';
 
 import express from 'express';
+import UserService from './services/user';
 
 async function init(){
     const app =express();
@@ -21,9 +22,15 @@ app.get('/',(req,res)=>{
 
 app.use('/graphql',expressMiddleware(await createApolloGraphqlServer(),{
     context: async({req})=>{
-        return {
-            name:"piyush"
-        } //any req before server goe sto context adn those we retrurn in the context and can be accesed by all gql elemt s
+        //any req before server goe sto context adn those we retrurn in the context and can be accesed by all gql elemt s
+        // @ts-ignore
+        const token = req.headers['token']
+        try {
+            const user = UserService.decodeJWT(token as string);
+            return {user}
+        } catch (error) {
+            return {};
+        }
     }
 }));
 

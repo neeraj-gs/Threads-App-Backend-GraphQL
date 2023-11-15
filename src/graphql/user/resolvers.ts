@@ -9,7 +9,8 @@ const queries = {
         return token
     },
 
-    getCurrentUser: async()=>{
+    getCurrentUser: async(_:any,parameters:any,context:any)=>{
+        console.log(context)
         throw new Error("Not implemented")
     }
 }

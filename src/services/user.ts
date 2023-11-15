@@ -71,6 +71,10 @@ class UserService {
 
     }
 
+    public static decodeJWT(token:string){
+        return jwt.verify(token,secret);
+    }
+
 }
 
 export default UserService
