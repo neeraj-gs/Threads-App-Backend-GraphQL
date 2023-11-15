@@ -19,7 +19,13 @@ app.get('/',(req,res)=>{
 
 // const gqlServer = await expressMiddleware(createApolloGraphqlServer())
 
-app.use('/graphql',expressMiddleware(await createApolloGraphqlServer()));
+app.use('/graphql',expressMiddleware(await createApolloGraphqlServer(),{
+    context: async({req})=>{
+        return {
+            name:"piyush"
+        } //any req before server goe sto context adn those we retrurn in the context and can be accesed by all gql elemt s
+    }
+}));
 
 
 
