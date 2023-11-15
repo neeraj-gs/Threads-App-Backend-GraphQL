@@ -1,6 +1,8 @@
 import { prismaClient } from "../lib/db"
 import {createHmac,randomBytes} from 'node:crypto' //a crypto library used ot generate salt adn ahs the password
+import jwt from 'jsonwebtoken'
 
+const secret = "Superman";
 
 export interface CreateUserPayload{
     firstName: string;
@@ -62,6 +64,8 @@ class UserService {
         }
 
         //generate token if succesufrl
+        const token = jwt.sign({id:user.id,email:user.email},secret);
+        return token;
 
 
 
