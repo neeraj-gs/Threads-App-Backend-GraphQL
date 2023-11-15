@@ -7,6 +7,10 @@ const queries = {
             password:payload.password
         })
         return token
+    },
+
+    getCurrentUser: async()=>{
+        throw new Error("Not implemented")
     }
 }
 const mutations = {
