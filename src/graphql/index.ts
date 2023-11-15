@@ -28,6 +28,8 @@ const gqlServer = new ApolloServer({
     //if we are passsing sme parameter the first query will be an empty _ underscore
 })
 
+
+
 await gqlServer.start();
 
 return gqlServer;
