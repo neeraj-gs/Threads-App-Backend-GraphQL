@@ -25,6 +25,20 @@ A Complete Backend Apllication that allows users to Register or Login and then P
 - Uses Prisma as a service layer between the database and communication
 
 
+
+### Screenshots
+
+![docker file conenction](/Screenshots/1.png)
+
+![docker file conenction](/Screenshots/2.png)
+
+![docker file conenction](/Screenshots/3.png)
+
+![docker file conenction](/Screenshots/4.png)
+  
+![docker file conenction](/Screenshots/5.png)
+
+
 ### Connecting to Database
 
 To run this project, you will need to add the following environment variables to your .env file
@@ -101,7 +115,4 @@ Any postgresql commands can be run here:
 
 
 
-### Screenshots
-
-![docker file conenction]()
 
