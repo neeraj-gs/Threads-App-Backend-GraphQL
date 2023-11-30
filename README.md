@@ -108,6 +108,8 @@ Any postgresql commands can be run here:
   select * from  users;
 ```
 
+### Future Work
+Can Add more features related to different interactions present in a SOcial Media Platform and can interact with the apllication using docker used as a postgresql databse for integrations.
 
 
 
